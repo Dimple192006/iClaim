@@ -32,23 +32,29 @@ const FileClaim = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navigation />
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
+          {/* Title */}
           <div className="text-center mb-8 animate-fade-in">
-            <h1 className="text-4xl font-bold mb-2">File a New Claim</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+              File a New Claim
+            </h1>
+            <p className="text-gray-600 dark:text-gray-300">
               Complete the form below to submit your insurance claim
             </p>
           </div>
 
-          <Card className="p-8">
+          {/* Form Card */}
+          <Card className="p-8 shadow-lg border border-yellow-200/40 dark:border-yellow-600/30 bg-white/90 dark:bg-gray-800/80">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Claim Type */}
               <div className="space-y-2">
-                <Label htmlFor="claimType">Claim Type *</Label>
+                <Label htmlFor="claimType" className="text-yellow-600 dark:text-yellow-400">
+                  Claim Type *
+                </Label>
                 <Select required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select claim type" />
@@ -64,7 +70,9 @@ const FileClaim = () => {
 
               {/* Policy Number */}
               <div className="space-y-2">
-                <Label htmlFor="policyNumber">Policy Number *</Label>
+                <Label htmlFor="policyNumber" className="text-yellow-600 dark:text-yellow-400">
+                  Policy Number *
+                </Label>
                 <Input
                   id="policyNumber"
                   placeholder="Enter your policy number"
@@ -74,7 +82,9 @@ const FileClaim = () => {
 
               {/* Incident Date */}
               <div className="space-y-2">
-                <Label htmlFor="incidentDate">Date of Incident *</Label>
+                <Label htmlFor="incidentDate" className="text-yellow-600 dark:text-yellow-400">
+                  Date of Incident *
+                </Label>
                 <Input
                   id="incidentDate"
                   type="date"
@@ -84,7 +94,9 @@ const FileClaim = () => {
 
               {/* Description */}
               <div className="space-y-2">
-                <Label htmlFor="description">Description *</Label>
+                <Label htmlFor="description" className="text-yellow-600 dark:text-yellow-400">
+                  Description *
+                </Label>
                 <Textarea
                   id="description"
                   placeholder="Provide details about what happened..."
@@ -95,7 +107,9 @@ const FileClaim = () => {
 
               {/* Estimated Amount */}
               <div className="space-y-2">
-                <Label htmlFor="amount">Estimated Claim Amount ($)</Label>
+                <Label htmlFor="amount" className="text-yellow-600 dark:text-yellow-400">
+                  Estimated Claim Amount ($)
+                </Label>
                 <Input
                   id="amount"
                   type="number"
@@ -107,8 +121,10 @@ const FileClaim = () => {
 
               {/* File Upload */}
               <div className="space-y-2">
-                <Label htmlFor="documents">Upload Documents/Photos</Label>
-                <div className="border-2 border-dashed rounded-lg p-8 text-center hover:border-primary transition-colors">
+                <Label htmlFor="documents" className="text-yellow-600 dark:text-yellow-400">
+                  Upload Documents/Photos
+                </Label>
+                <div className="border-2 border-dashed rounded-lg p-8 text-center hover:border-yellow-500 transition-colors">
                   <input
                     id="documents"
                     type="file"
@@ -118,11 +134,11 @@ const FileClaim = () => {
                     onChange={(e) => setFiles(e.target.files)}
                   />
                   <label htmlFor="documents" className="cursor-pointer">
-                    <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <Upload className="h-12 w-12 mx-auto mb-4 text-gray-500 dark:text-gray-400" />
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                       Click to upload or drag and drop
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                       PNG, JPG, PDF up to 10MB each
                     </p>
                   </label>
@@ -130,8 +146,8 @@ const FileClaim = () => {
                 {files && files.length > 0 && (
                   <div className="mt-4 space-y-2">
                     {Array.from(files).map((file, index) => (
-                      <div key={index} className="flex items-center gap-2 text-sm">
-                        <FileText className="h-4 w-4 text-muted-foreground" />
+                      <div key={index} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+                        <FileText className="h-4 w-4 text-yellow-500" />
                         <span>{file.name}</span>
                       </div>
                     ))}
@@ -139,19 +155,19 @@ const FileClaim = () => {
                 )}
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Buttons */}
               <div className="flex gap-4 pt-4">
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1"
+                  className="flex-1 border-yellow-500 text-yellow-600 hover:bg-yellow-50 dark:text-yellow-400 dark:border-yellow-600 dark:hover:bg-gray-700"
                   onClick={() => navigate("/")}
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="flex-1 bg-gradient-hero"
+                  className="flex-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white hover:opacity-90"
                 >
                   Submit Claim
                 </Button>
